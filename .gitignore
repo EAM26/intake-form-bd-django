@@ -1,0 +1,57 @@
+# Python-related ignores
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+.Python
+
+# Virtual environment
+env/
+venv/
+ENV/
+.VENV/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django-related ignores
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# PyCharm-related ignores
+.idea/
+
+# Environment variables
+.env
+.env.*
+
+# macOS system files
+.DS_Store
+
+# Backup files
+*.bak
+*.orig
+*.tmp
+
+# Node.js dependencies (if using JavaScript or React in the frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+
+# Coverage reports
+.coverage
+coverage.xml
+htmlcov/
+
+# Docker-related files
+*.pid
+*.seed
+*.pid.lock
+/.env
