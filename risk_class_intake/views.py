@@ -28,6 +28,7 @@ def index(request):
             customization = form.cleaned_data["customization"]
             partial_security = form.cleaned_data["partial_security"]
             maintenance = form.cleaned_data["maintenance"]
+            frequency = form.cleaned_data["frequency"]
 
             # Debugging: Print the cleaned data
             print(f"Name: {name}, Address: {address}, Zip Code: {zip_code},"
@@ -44,7 +45,8 @@ def index(request):
                                 shield=shield, alarm=alarm, verification=
                                 verification, reaction=reaction,
                                 customization=customization, partial_security=
-                                partial_security, maintenance=maintenance)
+                                partial_security, maintenance=maintenance,
+                                frequency=frequency)
             return redirect('index')
         else:
             # Debugging: Print form errors

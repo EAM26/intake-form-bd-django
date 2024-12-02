@@ -22,6 +22,7 @@ class Form(models.Model):
     customization = models.CharField(max_length=80, null=True, blank=True)
     partial_security = models.CharField(max_length=80, null=True, blank=True)
     maintenance = models.CharField(max_length=80, null=True, blank=True)
+    frequency = models.IntegerField(max_length=80, null=True, blank=True)
 
     def __str__(self):
         return f"{self.name}\n {self.city}"

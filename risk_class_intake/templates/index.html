@@ -220,11 +220,15 @@
 
 <div>
     <label>Onderhoud:</label>
-    <input type="radio" id="MaintenanceContract-maintenance" name="maintenance" value="Contract voor onderhoud">
-    <label for="MaintenanceContract-maintenance">Contract voor onderhoud</label>
-    <input type="text" id="maintenance-frequency"
-           placeholder="?">
-    <label for="maintenance-frequency">keren per jaar</label>
+    <input type="radio" id="maintenance-no" name="maintenance"
+           value="Geen onderhoudscontract">
+    <label for="maintenance-no">Geen onderhoudscontract</label>
+    <input type="radio" id="maintenance-yes" name="maintenance"
+           value="Contract voor onderhoud">
+    <label for="maintenance-yes">Wel onderhoudscontract</label>
+    <input type="number" id="frequency" name="frequency" placeholder="?"
+           value="0" min="0" required>
+    <label for="frequency">keren per jaar</label>
 </div>
 
 

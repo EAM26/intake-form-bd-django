@@ -21,3 +21,4 @@ class IntakeForm(forms.Form):
     customization = forms.CharField(max_length=80)
     partial_security = forms.CharField(max_length=80)
     maintenance = forms.CharField(max_length=80)
+    frequency = forms.IntegerField()
