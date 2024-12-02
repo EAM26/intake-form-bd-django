@@ -10,3 +10,6 @@ class Form(models.Model):
     risk_class = models.CharField(max_length=80)
     date = models.DateField()
     email = models.EmailField()
+
+    def __str__(self):
+        return f"{self.name}\n {self.city}"
