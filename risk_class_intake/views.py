@@ -29,18 +29,21 @@ def index(request):
                 reaction=form.cleaned_data["reaction"],
                 customization=form.cleaned_data["customization"],
                 partial_security=form.cleaned_data["partial_security"],
-                maintenance=form.cleaned_data["maintenance"],
                 frequency=form.cleaned_data["frequency"]
             )
 
             # Handle the dynamic items
             item_names = request.POST.getlist('item_name[]')
             item_values = request.POST.getlist('item_value[]')
+            item_attractiveness = request.POST.getlist('item_attractiveness[]')
 
-            for name, value in zip(item_names, item_values):
-                if name and value:  # Ensure no empty fields are saved
+            for name, value, attractiveness in zip(item_names, item_values,
+                                                   item_attractiveness):
+                if name and value and attractiveness:  # Ensure no empty
+                    # fields are saved
                     Item.objects.create(form=form_instance, name=name,
-                                        value=float(value))
+                                        value=float(value),
+                                        attractiveness=attractiveness)
 
             return redirect('index')
         else:

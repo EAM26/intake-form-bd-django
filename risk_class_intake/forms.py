@@ -20,5 +20,4 @@ class IntakeForm(forms.Form):
     reaction = forms.CharField(max_length=80)
     customization = forms.CharField(max_length=80)
     partial_security = forms.CharField(max_length=80)
-    maintenance = forms.CharField(max_length=80)
     frequency = forms.IntegerField()

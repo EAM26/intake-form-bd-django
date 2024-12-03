@@ -253,30 +253,40 @@
 
             <div>
                 <label>Onderhoud:</label>
-                <input type="radio" id="maintenance-no" name="maintenance"
-                       value="Geen onderhoudscontract">
-                <label for="maintenance-no">Geen onderhoudscontract</label>
-                <input type="radio" id="maintenance-yes" name="maintenance"
-                       value="Contract voor onderhoud">
-                <label for="maintenance-yes">Wel onderhoudscontract</label>
+                <label for="frequency">keren per jaar</label>
                 <input type="number" id="frequency" name="frequency"
                        placeholder="?"
                        value="0" min="0" required>
-                <label for="frequency">keren per jaar</label>
             </div>
         </div>
         <div class="form-group mb-4 form-lower" id="dynamic-inputs">
             <h4>Attractieve goederen en inventaris (bedrijven)</h4>
             <label>Voeg items toe:</label>
             <div class="d-flex mb-2 align-items-center input-row">
-                <input type="text" name="item_name[]" class="form-control me-2" placeholder="Naam/Beschrijving" required>
-                <input type="number" name="item_value[]" class="form-control me-2" placeholder="Euro's" min="0" required>
-                <button type="button" class="btn btn-danger remove-btn">Verwijder</button>
+                <input type="text" name="item_name[]" class="form-control me-2"
+                       placeholder="Naam/Beschrijving" required>
+                <input type="number" name="item_value[]"
+                       class="form-control me-2" placeholder="Euro's" min="0"
+                       required>
+                <select name="item_attractiveness[]" class="form-select me-2"
+                        required>
+                    <option value="" disabled selected>Attractiviteit</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="H">H</option>
+                    <option value="ZH">ZH</option>
+                </select>
+                <button type="button" class="btn btn-danger remove-btn">
+                    Verwijder
+                </button>
             </div>
         </div>
         <div>
-            <button type="button" id="add-btn" class="btn btn-secondary mb-4">Voeg item toe</button>
-            <button class="btn btn-secondary mb-4" type="submit">Submit</button>
+            <button type="button" id="add-btn" class="btn btn-secondary mb-4">
+                Voeg item toe
+            </button>
+            <button class="btn btn-secondary mb-4" type="submit">Submit
+            </button>
         </div>
     </form>
 </div>
@@ -309,6 +319,28 @@
         valueInput.min = '0';
         valueInput.required = true;
 
+        // Add the select box
+        const selectInput = document.createElement('select');
+        selectInput.name = 'item_attractiveness[]';
+        selectInput.className = 'form-select me-2';
+        selectInput.required = true;
+
+        // Add options to the select box
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Attractiviteit';
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        selectInput.appendChild(defaultOption);
+
+        const options = ['L', 'M', 'H', 'ZH'];
+        options.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            selectInput.appendChild(option);
+        });
+
         // Add the remove button
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
@@ -319,6 +351,7 @@
         // Append the inputs and button to the row
         newRow.appendChild(nameInput);
         newRow.appendChild(valueInput);
+        newRow.appendChild(selectInput); // Ensure the select box is appended
         newRow.appendChild(removeBtn);
 
         // Append the row to the container
