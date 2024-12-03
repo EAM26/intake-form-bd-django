@@ -22,7 +22,18 @@ class Form(models.Model):
     customization = models.CharField(max_length=80, null=True, blank=True)
     partial_security = models.CharField(max_length=80, null=True, blank=True)
     maintenance = models.CharField(max_length=80, null=True, blank=True)
-    frequency = models.IntegerField(max_length=80, null=True, blank=True)
+    frequency = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.name}\n {self.city}"
+
+
+class Item(models.Model):
+    form = models.ForeignKey(Form, on_delete=models.CASCADE,
+                             related_name="items")
+    name = models.CharField(max_length=255)  # Name or description of the item
+    value = models.FloatField()  # Value in Euros
+    attractiveness = models.CharField(max_length=2, default='L')  # Attr. code
+
+    def __str__(self):
+        return f"{self.name}: €{self.value} with code: {self.attractiveness}"
