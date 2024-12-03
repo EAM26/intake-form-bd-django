@@ -18,6 +18,13 @@
     <form class="my_form" method="post">
         {% csrf_token %}
         <div class="form-upper">
+            {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
             <div class="form-group mb-4">
                 <label for="name">Naam Aanvrager:</label>
                 <input class="form-control" type="text" id="name"
@@ -103,7 +110,7 @@
             <div>
                 <label>Organisatorisch:</label>
                 <input type="radio" id="O1-organizational"
-                       name="organizational" value="O1">
+                       name="organizational" value="O1" required>
                 <label for="O1-organizational">Option 1</label>
                 <input type="radio" id="O2-organizational"
                        name="organizational" value="O2">
@@ -113,7 +120,7 @@
             <div>
                 <label>Bouwkundig:</label>
                 <input type="radio" id="BK1-constructional"
-                       name="constructional" value="BK1">
+                       name="constructional" value="BK1" required>
                 <label for="BK1-constructional">BK1</label>
                 <input type="radio" id="BK2-constructional"
                        name="constructional" value="BK2">
@@ -129,7 +136,7 @@
             <div>
                 <label>Compartiment:</label>
                 <input type="radio" id="CO1-compartment" name="compartment"
-                       value="CO1">
+                       value="CO1" required>
                 <label for="CO1-compartment">CO1</label>
                 <input type="radio" id="CO2-compartment" name="compartment"
                        value="CO2">
@@ -145,7 +152,7 @@
             <div>
                 <label>Meeneem beperkend:</label>
                 <input type="radio" id="ME1-carryaway" name="carryaway"
-                       value="ME1">
+                       value="ME1" required>
                 <label for="ME1-carryaway">ME1</label>
                 <input type="radio" id="ME2-carryaway" name="carryaway"
                        value="ME2">
@@ -161,7 +168,7 @@
             <div>
                 <label>Elektronisch:</label>
                 <input type="radio" id="EL1-electronic" name="electronic"
-                       value="EL1">
+                       value="EL1" required>
                 <label for="EL1-electronic">EL1</label>
                 <input type="radio" id="EL2-electronic" name="electronic"
                        value="EL2">
@@ -176,7 +183,8 @@
 
             <div>
                 <label>Schildetectie:</label>
-                <input type="radio" id="SD1-shield" name="shield" value="SD1">
+                <input type="radio" id="SD1-shield" name="shield" value="SD1"
+                       required>
                 <label for="SD1-shield">SD1</label>
                 <input type="radio" id="SD2-shield" name="shield" value="SD2">
                 <label for="SD2-shield">SD2</label>
@@ -188,7 +196,8 @@
 
             <div>
                 <label>Alarmtransmissie:</label>
-                <input type="radio" id="AT1-alarm" name="alarm" value="AT1">
+                <input type="radio" id="AT1-alarm" name="alarm" value="AT1"
+                       required>
                 <label for="AT1-alarm">AT1</label>
                 <input type="radio" id="AT2-alarm" name="alarm" value="AT2">
                 <label for="AT2-alarm">AT2</label>
@@ -201,7 +210,7 @@
             <div>
                 <label>Tech. Alarmverificatie:</label>
                 <input type="radio" id="Video-verification" name="verification"
-                       value="Video">
+                       value="Video" required>
                 <label for="Video-verification">Video</label>
                 <input type="radio" id="Audio-verification" name="verification"
                        value="Audio">
@@ -214,7 +223,7 @@
             <div>
                 <label>Reactie:</label>
                 <input type="radio" id="RE1-reaction" name="reaction"
-                       value="RE1">
+                       value="RE1" required>
                 <label for="RE1-reaction">RE1</label>
                 <input type="radio" id="RE2-reaction" name="reaction"
                        value="RE2">
@@ -230,7 +239,7 @@
             <div>
                 <label>Maatwerk:</label>
                 <input type="radio" id="NotApplicable-customization"
-                       name="customization" value="N.V.T.">
+                       name="customization" value="N.V.T." required>
                 <label for="NotApplicable-customization">N.V.T.</label>
                 <input type="radio" id="CustomPlan-customization"
                        name="customization"
@@ -242,7 +251,7 @@
             <div>
                 <label>Partiële beveiliging:</label>
                 <input type="radio" id="No-partial-security"
-                       name="partial_security" value="Nee">
+                       name="partial_security" value="Nee" required>
                 <label for="No-partial-security">Nee</label>
                 <input type="radio" id="Yes-partial-security"
                        name="partial_security"
@@ -288,6 +297,7 @@
             <button class="btn btn-secondary mb-4" type="submit">Submit
             </button>
         </div>
+
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
