@@ -31,9 +31,10 @@ class Form(models.Model):
 class Item(models.Model):
     form = models.ForeignKey(Form, on_delete=models.CASCADE,
                              related_name="items")
-    name = models.CharField(max_length=255)  # Name or description of the item
+    attr_name = models.CharField(max_length=255)  # Name or description of the
+    # item
     value = models.FloatField()  # Value in Euros
     attractiveness = models.CharField(max_length=2, default='L')  # Attr. code
 
     def __str__(self):
-        return f"{self.name}: €{self.value} with code: {self.attractiveness}"
+        return f"{self.attr_name}: €{self.value} with code: {self.attractiveness}"
